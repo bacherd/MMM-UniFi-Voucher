@@ -3,8 +3,6 @@ A [MagicMirror²](https://magicmirro.builders) module for [UniFi Hotspot](https:
 
 ![Example](screenshot.jpg)
 
-## Dependencies
-
 ## Installation
 
 Go to your MacigMirror's module folder:

@@ -7,7 +7,7 @@ A [MagicMirror²](https://magicmirro.builders) module for [UniFi Hotspot](https:
 
 ## Installation
 
-Go to your MAcigMirror's module folder:
+Go to your MacigMirror's module folder:
 ````
 cd ~/MagicMirror/modules
 ````

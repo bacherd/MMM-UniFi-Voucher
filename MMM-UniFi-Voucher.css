@@ -1,0 +1,15 @@
+.MMM-UniFi-Voucher div {
+	color: #999;
+	font-size: 20px;
+}
+
+.MMM-UniFi-Voucher ul {
+	color: #999;
+	margin: 0px;
+	list-style-type:none;
+}
+
+.MMM-UniFi-Voucher li {
+	color: #999;
+	height: 26px;
+}

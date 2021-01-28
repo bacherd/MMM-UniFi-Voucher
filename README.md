@@ -14,7 +14,7 @@ cd ~/MagicMirror/modules
 
 Clone this repository:
 ````
-git clone https://github.com/......git
+git clone https://github.com/bacherd/MMM-UniFi-Voucher.git
 ````
 Add the module to the modules list in  your config file:
 

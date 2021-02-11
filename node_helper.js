@@ -23,13 +23,19 @@ module.exports = NodeHelper.create({
 			},
 			rejectUnauthorized: false,
 		};
-		
+
+		console.log("[UniFi-Voucher] " + "get vouchers " + this.config.url);
 		request(options, function (error, response, body) {
 			if (!error && response.statusCode === 200) {
 				var vouchers = body;
 				self.sendSocketNotification("UNIFI_VOUCHER_ITEMS", vouchers);
 			} else {
-				console.log(error);
+				console.log("[UniFi-Voucher] " + error);
+				var msg = {
+					"error": "cannot get vouchers from " +  self.config.url
+				}
+				self.sendSocketNotification("UNIFI_VOUCHER_ERROR", JSON.stringify(msg));
+				self.cookie = '';
 			}
 		});
 	},
@@ -51,20 +57,26 @@ module.exports = NodeHelper.create({
 			rejectUnauthorized: false,
 		};
 		
+		console.log("[UniFi-Voucher] " + "login /api/login");
 		request(options, function (error, response, body) {
 			if (!error && response.statusCode === 200) {
 				var setCookie = response.headers['set-cookie'];
 				self.cookie = setCookie[0].split(' ')[0];
 				self.getVouchers();
 			} else {
-				console.log(error);
+				console.log("[UniFi-Voucher] " + error);
+				var msg = {
+					"error": "cannot login to " +  self.config.url
+				}
+				self.sendSocketNotification("UNIFI_VOUCHER_ERROR", JSON.stringify(msg));
 				return null;
 			}
 		});
 	},
 
 	fetch: function() {
-		//console.log("Fetch vouchers " + this.config.url);
+
+		//console.log("[UniFi-Voucher] cookie:" + this.cookie);
 		if (this.cookie === '') {
 			this.login();
 		} else {

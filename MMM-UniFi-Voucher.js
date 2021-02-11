@@ -13,7 +13,8 @@ Module.register("MMM-UniFi-Voucher", {
 		user: "",
 		pwd: "",
 		maximumEntries: 5,
-		updateInterval: 60 * 1000,
+		//updateInterval: 60 * 1000,
+		updateInterval: 10 * 1000,
 		animationSpeed: 2.5 * 1000,
 		title: "WLAN-Hotspot Voucher"
 	},
@@ -38,18 +39,19 @@ Module.register("MMM-UniFi-Voucher", {
                 return ["MMM-UniFi-Voucher.css"];
         },
 
-
-	//notificationReceived: function(notification, payload, sender) {
-	//	Log.info(this.name + " - received notification: " + notification);
-	//},
-
 	socketNotificationReceived: function(notification, payload) {
 		var self = this;
 		var obj = JSON.parse(payload);
-		
-		if (JSON.stringify(self.data) !== JSON.stringify(obj.data)) {
-			self.data = obj.data
+
+		if (notification == "UNIFI_VOUCHER_ITEMS") {
+			if (JSON.stringify(self.data) !== JSON.stringify(obj.data)) {
+				self.data = obj.data
+				self.updateDom(self.config.animationSpeed);
+			}
+		} else if (notification == "UNIFI_VOUCHER_ERROR") {
+			self.data = []
 			self.updateDom(self.config.animationSpeed);
+			Log.error(this.name + " " + obj.error)
 		}
 	},
 

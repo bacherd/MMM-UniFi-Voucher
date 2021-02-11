@@ -1,9 +1,7 @@
 # MMM-UniFi-Voucher
-A [MagicMirror²](https://magicmirro.builders) module for [UniFi Hotspot](https://unifi-network.ui.com/) Voucher
+A [MagicMirror²](https://magicmirror.builders) module for [UniFi Hotspot](https://unifi-network.ui.com/) Voucher
 
 ![Example](screenshot.jpg)
-
-## Dependencies
 
 ## Installation
 

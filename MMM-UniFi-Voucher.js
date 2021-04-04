@@ -23,12 +23,11 @@ Module.register("MMM-UniFi-Voucher", {
 	getDom: function() {
 		var list = document.createElement("ul");
 		list.classList.add("MMM-UniFi-Voucher");
-		
-		for (index in this.data) {
-			if (this.data[index].status_expires == 0 && index < this.config.maximumEntries) {
+		for (index in this.data.vouchers) {
+			if (this.data.vouchers[index].status_expires == 0 && index < this.config.maximumEntries) {
 				var item = document.createElement("li")
 				item.classList.add("MMM-UniFi-Voucher");
-				item.innerHTML = this.data[index].code
+				item.innerHTML = this.data.vouchers[index].code
 				list.appendChild(item)
 			}
 		}
@@ -44,12 +43,12 @@ Module.register("MMM-UniFi-Voucher", {
 		var obj = JSON.parse(payload);
 
 		if (notification == "UNIFI_VOUCHER_ITEMS") {
-			if (JSON.stringify(self.data) !== JSON.stringify(obj.data)) {
-				self.data = obj.data
+			if (JSON.stringify(self.data.vouchers) !== JSON.stringify(obj.data)) {
+				self.data.vouchers = obj.data
 				self.updateDom(self.config.animationSpeed);
 			}
 		} else if (notification == "UNIFI_VOUCHER_ERROR") {
-			self.data = []
+			self.data.vouchers = []
 			self.updateDom(self.config.animationSpeed);
 			Log.error(this.name + " " + obj.error)
 		}

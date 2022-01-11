@@ -1,0 +1,25 @@
+{
+  "name": "Magic-Mirror-Module-MMM-UniFi-Voucher",
+  "version": "1.0.0",
+  "description": "UniFi-Voucher module for Magic Mirror.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bacherd/MMM-UniFi-Voucher.git"
+  },
+  "keywords": [
+    "magic mirror",
+    "smart mirror",
+    "UniFi",
+    "module"
+  ],
+  "author": "Dominik Bacher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alberttwong/MMM-iFrame/issues"
+  },
+  "homepage": "https://github.com/bacherd/MMM-UniFi-Voucher/issues",
+  "dependencies": {
+    "request": "latest"
+    }
+}
+

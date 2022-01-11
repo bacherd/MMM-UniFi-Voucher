@@ -15,9 +15,9 @@
   "author": "Dominik Bacher",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alberttwong/MMM-iFrame/issues"
+    "url": "https://github.com/bacherd/MMM-UniFi-Voucher/issues"
   },
-  "homepage": "https://github.com/bacherd/MMM-UniFi-Voucher/issues",
+  "homepage": "https://github.com/bacherd/MMM-UniFi-Voucher/",
   "dependencies": {
     "request": "latest"
     }

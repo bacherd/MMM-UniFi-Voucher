@@ -1,6 +1,8 @@
 var NodeHelper = require("node_helper");
 var request = require("request")
 
+const Log = require("logger");
+
 module.exports = NodeHelper.create({
 
 	start: function() {
@@ -24,13 +26,15 @@ module.exports = NodeHelper.create({
 			rejectUnauthorized: false,
 		};
 
-		console.log("[UniFi-Voucher] " + "get vouchers " + this.config.url);
+		Log.info("[UniFi-Voucher] " + "get vouchers " + this.config.url);
 		request(options, function (error, response, body) {
 			if (!error && response.statusCode === 200) {
 				var vouchers = body;
+				Log.debug("[UniFi-Voucher] " + body);
 				self.sendSocketNotification("UNIFI_VOUCHER_ITEMS", vouchers);
 			} else {
-				console.log("[UniFi-Voucher] " + error);
+				Log.error("[UniFi-Voucher] " + error);
+				Log.debug("[UniFi-Voucher] " + body);
 				var msg = {
 					"error": "cannot get vouchers from " +  self.config.url
 				}
@@ -57,14 +61,16 @@ module.exports = NodeHelper.create({
 			rejectUnauthorized: false,
 		};
 		
-		console.log("[UniFi-Voucher] " + "login /api/login");
+		Log.info("[UniFi-Voucher] " + "login /api/login");
 		request(options, function (error, response, body) {
 			if (!error && response.statusCode === 200) {
 				var setCookie = response.headers['set-cookie'];
+				Log.debug("[UniFi-Voucher] " + body);
 				self.cookie = setCookie[0].split(' ')[0];
 				self.getVouchers();
 			} else {
-				console.log("[UniFi-Voucher] " + error);
+				Log.error("[UniFi-Voucher] " + error);
+				Log.debug("[UniFi-Voucher] " + body);
 				var msg = {
 					"error": "cannot login to " +  self.config.url
 				}
@@ -76,7 +82,7 @@ module.exports = NodeHelper.create({
 
 	fetch: function() {
 
-		//console.log("[UniFi-Voucher] cookie:" + this.cookie);
+		Log.debug("[UniFi-Voucher] cookie:" + this.cookie);
 		if (this.cookie === '') {
 			this.login();
 		} else {

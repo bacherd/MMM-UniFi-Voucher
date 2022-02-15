@@ -11,10 +11,16 @@ module.exports = NodeHelper.create({
 
 	getVouchers: function() {
 		var self = this;
+		
+		if (this.config.isGen2) {
+			this.api_url_voucher = '/proxy/network/api/s/default/stat/voucher';
+		} else {
+			this.api_url_voucher = '/api/s/default/stat/voucher';
+		}
 
 		var options = {
 			method: 'GET',
-			url: this.config.url + '/api/s/default/stat/voucher',
+			url: this.config.url + this.api_url_voucher,
 		  	headers: {
 		     		'cache-control': 'no-cache',
 		     		'content-type': 'application/json;charset=UTF-8',
@@ -46,10 +52,16 @@ module.exports = NodeHelper.create({
 
 	login: function() {
 		var self = this;
+		
+		if (this.config.isGen2) {
+			this.api_url_login = '/api/auth/login';
+		} else {
+			this.api_url_login = '/api/login';
+		}
 
 		var options = {
 			method: 'POST',
-			url: this.config.url + '/api/login',
+			url: this.config.url + this.api_url_login,
 		  	headers: {
 		     		'cache-control': 'no-cache',
 		     		'content-type': 'application/json;charset=UTF-8',
@@ -93,9 +105,9 @@ module.exports = NodeHelper.create({
 	scheduleUpdateInterval: function() {
 		var self = this;
 
-		self.fetch();			
+		self.fetch();
 		setInterval(function() {
-			self.fetch();			
+			self.fetch();
 		}, this.config.updateInterval);
 	},
 	

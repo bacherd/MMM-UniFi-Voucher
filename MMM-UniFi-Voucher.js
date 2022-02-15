@@ -16,7 +16,8 @@ Module.register("MMM-UniFi-Voucher", {
 		//updateInterval: 60 * 1000,
 		updateInterval: 10 * 1000,
 		animationSpeed: 2.5 * 1000,
-		title: "WLAN-Hotspot Voucher"
+		title: "WLAN-Hotspot Voucher",
+		isGen2: false
 	},
 	
 	// Override dom generator.

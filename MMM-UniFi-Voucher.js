@@ -18,7 +18,8 @@ Module.register("MMM-UniFi-Voucher", {
 		animationSpeed: 2.5 * 1000,
 		title: "WLAN-Hotspot Voucher",
 		isGen2: false,
-		split: 3
+		split: 3,
+		showDurationTime: true
 	},
 	
 	// Override dom generator.
@@ -32,16 +33,37 @@ Module.register("MMM-UniFi-Voucher", {
 				var index = 0;
 
 				item.classList.add("MMM-UniFi-Voucher");
+
+				var itemNumber = document.createElement('span');
+				itemNumber.classList.add("MMM-UniFi-Voucher-number");
 				if (this.config.split < 1) {
-					item.innerHTML = this.data.vouchers[index].code
+					itemNumber.innerHTML = this.data.vouchers[index].code
 				} else {
-					item.innerHTML = code.substr(index, this.config.split);
+					itemNumber.innerHTML += code.substr(index, this.config.split);
 					index += this.config.split;
 
 					while(index < code.length) {
-						item.innerHTML += "-" + code.substr(index, this.config.split);
+						itemNumber.innerHTML += "-" + code.substr(index, this.config.split);
 						index += this.config.split;
 					};
+				}
+				item.appendChild(itemNumber);
+
+				if (this.config.showDurationTime === true) {
+					var itemDuration = document.createElement('span');
+					itemDuration.classList.add("MMM-UniFi-Voucher-duration");
+
+					var duration = this.data.vouchers[index].duration;
+					var d = Math.floor(duration / (60 * 24));
+					var h =  Math.floor(duration % (60*24) / 60);
+					var m =  Math.floor(duration % 60);
+
+					var dDuration = d > 0 ? d + (d == 1 ? " day " : " days ") : "";
+					var hDuration = h > 0 ? h + (h == 1 ? " hour " : " hours ") : "";
+					var mDuration = m > 0 ? m + (m == 1 ? " minute " : " minutes ") : "";
+
+					itemDuration.innerHTML += dDuration + hDuration + mDuration;
+					item.appendChild(itemDuration);
 				}
 				list.appendChild(item)
 			}
@@ -49,9 +71,9 @@ Module.register("MMM-UniFi-Voucher", {
 		return list;
 	},
 
-        getStyles: function () {
-                return ["MMM-UniFi-Voucher.css"];
-        },
+	getStyles: function () {
+		return ["MMM-UniFi-Voucher.css"];
+	},
 
 	socketNotificationReceived: function(notification, payload) {
 		var self = this;

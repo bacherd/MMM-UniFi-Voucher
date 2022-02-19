@@ -31,14 +31,15 @@ Add the module to the modules list in  your config file:
 
 ## Configuration
 
-|option            | description
-|------------------|------------
-| `user`           | Operator name: Create a new one under `Hotspotmanager->OPERATORS`
-| `pwd`            | Operator password
-| `url`            | Url to unifi controller api <br><br> **Default value:** `https://unifi-controller:8443`
-| `maximumEntries` | **Default value:** `5`
-| `updateInterval` | How often does the content update in milliseconds. <br><br> **Default value:** `60000`
-| `animationSpeed` | Animation speed in milliseconds. <br><br> **Default value:** `2500`
-| `title`          | Headline <br><br> **Default value:** `WLAN-Hotspot Voucher`
-| `isGen2`         | Use Cloudkey Gen2 api <br><br> **Default value:** `false`
-| `split`          | Split voucher number for easier presentation <br><br> **Default value:** `3` use `0` for disable.      
+|option             | description
+|-------------------|------------
+| `user`            | Operator name: Create a new one under `Hotspotmanager->OPERATORS`
+| `pwd`             | Operator password
+| `url`             | Url to unifi controller api <br><br> **Default value:** `https://unifi-controller:8443`
+| `maximumEntries`  | **Default value:** `5`
+| `updateInterval`  | How often does the content update in milliseconds. <br><br> **Default value:** `60000`
+| `animationSpeed`  | Animation speed in milliseconds. <br><br> **Default value:** `2500`
+| `title`           | Headline <br><br> **Default value:** `WLAN-Hotspot Voucher`
+| `isGen2`          | Use Cloudkey Gen2 api <br><br> **Default value:** `false`
+| `split`           | Split voucher number for easier presentation <br><br> **Default value:** `3` use `0` for disable.      
+| `showDurationTime | Show voucher duration time <br><br> **Default value:** `true`.

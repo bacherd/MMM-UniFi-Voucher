@@ -17,7 +17,8 @@ Module.register("MMM-UniFi-Voucher", {
 		updateInterval: 10 * 1000,
 		animationSpeed: 2.5 * 1000,
 		title: "WLAN-Hotspot Voucher",
-		isGen2: false
+		isGen2: false,
+		split: 3
 	},
 	
 	// Override dom generator.
@@ -27,8 +28,21 @@ Module.register("MMM-UniFi-Voucher", {
 		for (index in this.data.vouchers) {
 			if (this.data.vouchers[index].status_expires == 0 && index < this.config.maximumEntries) {
 				var item = document.createElement("li")
+				var code = this.data.vouchers[index].code;
+				var index = 0;
+
 				item.classList.add("MMM-UniFi-Voucher");
-				item.innerHTML = this.data.vouchers[index].code
+				if (this.config.split < 1) {
+					item.innerHTML = this.data.vouchers[index].code
+				} else {
+					item.innerHTML = code.substr(index, this.config.split);
+					index += this.config.split;
+
+					while(index < code.length) {
+						item.innerHTML += "-" + code.substr(index, this.config.split);
+						index += this.config.split;
+					};
+				}
 				list.appendChild(item)
 			}
 		}

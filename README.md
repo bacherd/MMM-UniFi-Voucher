@@ -44,4 +44,4 @@ Add the module to the modules list in  your config file:
 | `split`            | Split voucher number for easier presentation <br><br> **Default value:** `3` use `0` for disable      
 | `showDurationTime` | Show voucher duration time <br><br> **Default value:** `true`
 | `showNote`         | Show voucher note <br><br> **Default value:** `false`
-| `noteFiler`        | Show only voucher with special note. <br><br> **Default value:** `[]`<br> **Example value:** `["mirror", "mm"]`
+| `noteFilter`        | Show only voucher with special note. <br><br> **Default value:** `[]`<br> **Example value:** `["mirror", "mm"]`

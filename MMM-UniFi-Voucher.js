@@ -30,7 +30,7 @@ Module.register("MMM-UniFi-Voucher", {
 			if (this.data.vouchers[index].status_expires == 0 && index < this.config.maximumEntries) {
 				var item = document.createElement("li")
 				var code = this.data.vouchers[index].code;
-				var index = 0;
+				var offset = 0;
 
 				item.classList.add("MMM-UniFi-Voucher");
 
@@ -39,12 +39,12 @@ Module.register("MMM-UniFi-Voucher", {
 				if (this.config.split < 1) {
 					itemNumber.innerHTML = this.data.vouchers[index].code
 				} else {
-					itemNumber.innerHTML += code.substr(index, this.config.split);
-					index += this.config.split;
+					itemNumber.innerHTML += code.substr(offset, this.config.split);
+					offset += this.config.split;
 
-					while(index < code.length) {
-						itemNumber.innerHTML += "-" + code.substr(index, this.config.split);
-						index += this.config.split;
+					while(offset < code.length) {
+						itemNumber.innerHTML += "-" + code.substr(offset, this.config.split);
+						offset += this.config.split;
 					};
 				}
 				item.appendChild(itemNumber);

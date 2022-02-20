@@ -37,7 +37,7 @@ Add the module to the modules list in  your config file:
 | `pwd`              | Operator password. <br><br> **Default value:** `""`
 | `url`              | Url to unifi controller api <br><br> **Default value:** `"https://unifi-controller:8443"`
 | `maximumEntries`   | **Default value:** `5`
-| `updateInterval`   | How often does the content update in milliseconds. <br><br> **Default value:** `60000`
+| `updateInterval`   | How often does the content update in milliseconds. <br><br> **Default value:** `10000`
 | `animationSpeed`   | Animation speed in milliseconds. <br><br> **Default value:** `2500`
 | `title`            | Headline <br><br> **Default value:** `"WLAN-Hotspot Voucher"`
 | `isGen2`           | Use Cloudkey Gen2 api <br><br> **Default value:** `false`

@@ -33,8 +33,8 @@ Add the module to the modules list in  your config file:
 
 |option              | description
 |--------------------|------------
-| `user`             | Operator name: Create a new one under `Hotspotmanager->OPERATORS`. <br><br> **Default value:** `""
-| `pwd`              | Operator password. <br><br> **Default value:** `""
+| `user`             | Operator name: Create a new one under `Hotspotmanager->OPERATORS`. <br><br> **Default value:** `""`
+| `pwd`              | Operator password. <br><br> **Default value:** `""`
 | `url`              | Url to unifi controller api <br><br> **Default value:** `"https://unifi-controller:8443"`
 | `maximumEntries`   | **Default value:** `5`
 | `updateInterval`   | How often does the content update in milliseconds. <br><br> **Default value:** `60000`

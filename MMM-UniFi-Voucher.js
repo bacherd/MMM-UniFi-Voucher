@@ -21,7 +21,8 @@ Module.register("MMM-UniFi-Voucher", {
 		split: 3,
 		showDurationTime: true,
 		showNote: true,
-		noteFilter: []
+		noteFilter: [],
+		noteFilterRegex: ""
 	},
 	
 	// Override dom generator.
@@ -42,6 +43,18 @@ Module.register("MMM-UniFi-Voucher", {
 					}
 					if (!this.config.noteFilter.includes(this.data.vouchers[index].note)) {
 						continue;
+					}
+				} else if (this.config.noteFilterRegex.length > 0) {
+					if (!this.data.vouchers[index].note) {
+						continue;
+					}
+
+					try {
+						if (!this.data.vouchers[index].note.match(this.config.noteFilterRegex)) {
+							continue;
+						}
+					} catch(e) {
+						Log.error(this.name + " " + e);
 					}
 				}
 

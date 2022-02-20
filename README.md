@@ -45,3 +45,28 @@ Add the module to the modules list in  your config file:
 | `showDurationTime` | Show voucher duration time <br><br> **Default value:** `true`
 | `showNote`         | Show voucher note <br><br> **Default value:** `false`
 | `noteFiler`        | Show only voucher with special note. <br><br> **Default value:** `[]`<br> **Example value:** `["mirror", "mm"]`
+| `noteFilterRegex`  | Show only vouchers that match the regular expression. Cannot be used with noteFilter. <br><br> **Default value:** `""`
+
+### noteFilterRegex
+
+For example use the regular expression to showing all vouchers containing word "business" "guest" but not "tomorrow" and "restricted".
+
+```` javascript
+noteFilterRegex="^.*(Business|Guest)(?!.*(tomorrow|restricted)).*$"
+````
+
+All notes:
+* "Business restricted vouchers for tomorrow"
+* "Business vouchers for tomorrow"
+* "Business vouchers for today"
+* "Guests welcome only to non-restricted"
+* "Guests welcome only today"
+* "Guests welcome only tomorrow"
+
+Filtered notes:
+* "Business vouchers for today"
+* "Guests welcome only today"
+
+Characters in the regular expression may need to be excaped.
+
+

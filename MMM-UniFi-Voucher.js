@@ -26,10 +26,12 @@ Module.register("MMM-UniFi-Voucher", {
 	
 	// Override dom generator.
 	getDom: function() {
+		var count = 0;
 		var list = document.createElement("ul");
 		list.classList.add("MMM-UniFi-Voucher");
+
 		for (index in this.data.vouchers) {
-			if (this.data.vouchers[index].status_expires == 0 && index < this.config.maximumEntries) {
+			if (this.data.vouchers[index].status_expires == 0 && count < this.config.maximumEntries) {
 				var item = document.createElement("li")
 				var code = this.data.vouchers[index].code;
 				var offset = 0;
@@ -87,6 +89,7 @@ Module.register("MMM-UniFi-Voucher", {
 				}
 
 				list.appendChild(item)
+				count++;
 			}
 		}
 		return list;

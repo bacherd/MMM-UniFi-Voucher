@@ -19,7 +19,8 @@ Module.register("MMM-UniFi-Voucher", {
 		title: "WLAN-Hotspot Voucher",
 		isGen2: false,
 		split: 3,
-		showDurationTime: true
+		showDurationTime: true,
+		showNote: true
 	},
 	
 	// Override dom generator.
@@ -65,6 +66,17 @@ Module.register("MMM-UniFi-Voucher", {
 					itemDuration.innerHTML += dDuration + hDuration + mDuration;
 					item.appendChild(itemDuration);
 				}
+
+				if (this.config.showNote === true) {
+					if (!!this.data.vouchers[index].note) {
+						var itemNote = document.createElement('span');
+						itemNote.classList.add("MMM-UniFi-Voucher-note");
+						itemNote.innerHTML = this.data.vouchers[index].note;
+						item.appendChild(itemNote);
+					}
+				}
+
+				console.log(this.data.vouchers[index]);
 				list.appendChild(item)
 			}
 		}

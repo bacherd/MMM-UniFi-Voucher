@@ -7,6 +7,7 @@
 	color: #999;
 	margin: 0px;
 	list-style-type:none;
+	text-align: left;
 }
 
 .MMM-UniFi-Voucher li {
@@ -20,3 +21,8 @@
 .MMM-UniFi-Voucher-duration {
 	margin-left: 15px;
 }
+
+.MMM-UniFi-Voucher-note {
+	margin-left: 15px;
+}
+

@@ -20,7 +20,8 @@ Module.register("MMM-UniFi-Voucher", {
 		isGen2: false,
 		split: 3,
 		showDurationTime: true,
-		showNote: true
+		showNote: true,
+		noteFilter: []
 	},
 	
 	// Override dom generator.
@@ -32,6 +33,15 @@ Module.register("MMM-UniFi-Voucher", {
 				var item = document.createElement("li")
 				var code = this.data.vouchers[index].code;
 				var offset = 0;
+
+				if (this.config.noteFilter.length > 0) {
+					if (!this.data.vouchers[index].note) {
+						continue;
+					}
+					if (!this.config.noteFilter.includes(this.data.vouchers[index].note)) {
+						continue;
+					}
+				}
 
 				item.classList.add("MMM-UniFi-Voucher");
 
@@ -76,7 +86,6 @@ Module.register("MMM-UniFi-Voucher", {
 					}
 				}
 
-				console.log(this.data.vouchers[index]);
 				list.appendChild(item)
 			}
 		}
